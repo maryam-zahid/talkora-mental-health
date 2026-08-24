@@ -1,28 +1,27 @@
 "use client";
 
+import { useRef } from "react";
 import {
   motion,
   useScroll,
   useTransform,
 } from "framer-motion";
 
-import { ArrowUpRight } from "lucide-react";
-import { useRef } from "react";
-
 import Container from "@/components/ui/container";
+import AnimatedButton from "@/components/ui/animated-button";
 
 const stats = [
   {
-    value: "15+",
-    label: "Years of care",
+    value: "5K+",
+    label: "Happy Clients",
   },
   {
-    value: "120+",
-    label: "Specialists",
+    value: "8Y+",
+    label: "Years Experience",
   },
   {
-    value: "40+",
-    label: "Locations",
+    value: "10+",
+    label: "Expert Therapists",
   },
 ];
 
@@ -37,28 +36,36 @@ export default function AboutSection() {
   const leftImageY = useTransform(
     scrollYProgress,
     [0, 1],
-    [40, -30]
+    [20, -20]
   );
 
   const rightImageY = useTransform(
     scrollYProgress,
     [0, 1],
-    [80, -45]
+    [35, -25]
   );
 
   return (
     <section
       ref={sectionRef}
       id="about"
-      className="overflow-hidden bg-[#FBF8F3] py-24 md:py-32 lg:py-40"
+      className="
+        overflow-hidden
+        bg-[#FBF8F3]
+        py-20
+        md:py-24
+        lg:py-28
+        xl:py-32
+      "
     >
       <Container>
-        {/* Label */}
-
-        <motion.div
+        {/* =========================
+            LABEL
+        ========================== */}
+        <motion.p
           initial={{
             opacity: 0,
-            y: 18,
+            y: 12,
           }}
           whileInView={{
             opacity: 1,
@@ -66,92 +73,111 @@ export default function AboutSection() {
           }}
           viewport={{
             once: true,
-            amount: 0.6,
+            amount: 0.3,
           }}
           transition={{
-            duration: 0.7,
+            duration: 0.6,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="text-center"
+          className="
+            text-center
+            text-[10px]
+            font-bold
+            uppercase
+            tracking-[0.32em]
+            text-[#173932]
+          "
         >
-          <span className="text-[10px] font-bold uppercase tracking-[0.32em] text-[#5C736C]">
-            About our care
-          </span>
-        </motion.div>
+          About Us
+        </motion.p>
 
-        {/* Heading */}
+        {/* =========================
+            HEADING
+        ========================== */}
+        <motion.h2
+          initial={{
+            opacity: 0,
+            y: 24,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.2,
+          }}
+          transition={{
+            duration: 0.85,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="
+            mx-auto
+            mt-5
+            max-w-[1120px]
+            text-center
+            display-font
 
-        <h2 className="mx-auto mt-7 max-w-[970px] text-center display-font text-[clamp(3.1rem,5.6vw,5.7rem)] leading-[0.98] tracking-[-0.045em] text-[#173932]">
-          {[
-            "Mental healthcare designed",
-            "around the whole person.",
-          ].map((line, index) => (
-            <span
-              key={line}
-              className="block overflow-hidden pb-[0.05em]"
-            >
-              <motion.span
-                initial={{
-                  y: "110%",
-                }}
-                whileInView={{
-                  y: "0%",
-                }}
-                viewport={{
-                  once: true,
-                  amount: 0.65,
-                }}
-                transition={{
-                  duration: 0.9,
-                  delay: index * 0.09,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                className="block"
-              >
-                {index === 1 ? (
-                  <>
-                    around the{" "}
-                    <em className="font-normal">
-                      whole person.
-                    </em>
-                  </>
-                ) : (
-                  line
-                )}
-              </motion.span>
-            </span>
-          ))}
-        </h2>
+            text-[clamp(2.8rem,4.6vw,5rem)]
+            leading-[1]
+            tracking-[-0.045em]
+            text-[#173932]
+          "
+        >
+          Creating a supportive space for emotional
+          <br className="hidden md:block" />
+          growth, healing, and personal wellbeing.
+        </motion.h2>
 
-        {/* Main asymmetric composition */}
+        {/* =========================
+            MAIN GRID
+        ========================== */}
+        <div
+          className="
+            mt-14
+            grid
+            gap-10
 
-        <div className="mt-16 grid items-start gap-8 lg:mt-24 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
-          {/* Left */}
-
+            lg:mt-16
+            lg:grid-cols-2
+            lg:gap-12
+          "
+        >
+          {/* =========================
+              LEFT COLUMN
+          ========================== */}
           <div>
             <motion.div
               style={{
                 y: leftImageY,
               }}
               initial={{
-                clipPath: "inset(0 100% 0 0)",
+                opacity: 0,
+                scale: 0.97,
               }}
               whileInView={{
-                clipPath: "inset(0 0% 0 0)",
+                opacity: 1,
+                scale: 1,
               }}
               viewport={{
                 once: true,
-                amount: 0.3,
+                amount: 0.1,
               }}
               transition={{
-                duration: 1.15,
+                duration: 0.9,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="overflow-hidden rounded-[28px]"
+              className="
+                overflow-hidden
+                rounded-[18px]
+                bg-[#EAE2D7]
+              "
             >
-              <motion.div
+              <motion.img
+                src="/images/about/about-therapy-1.jpg"
+                alt="Therapist speaking with a client"
                 initial={{
-                  scale: 1.08,
+                  scale: 1.05,
                 }}
                 whileInView={{
                   scale: 1,
@@ -160,26 +186,38 @@ export default function AboutSection() {
                   once: true,
                 }}
                 transition={{
-                  duration: 1.4,
+                  duration: 1.2,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                style={{
-                  backgroundImage:
-                    "url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1400&q=90')",
-                }}
-                className="aspect-[1.35/1] bg-cover bg-center"
+                className="
+                  block
+                  aspect-[1.45/1]
+                  w-full
+                  object-cover
+                  object-center
+                "
               />
             </motion.div>
 
-            {/* Stats */}
-
-            <div className="mt-14 grid grid-cols-3 border-t border-[#173932]/15 pt-7">
+            {/* =========================
+                STATS
+            ========================== */}
+            <div
+              className="
+                mt-10
+                grid
+                grid-cols-3
+                border-t
+                border-[#173932]/20
+                pt-7
+              "
+            >
               {stats.map((stat, index) => (
                 <motion.div
                   key={stat.label}
                   initial={{
                     opacity: 0,
-                    y: 22,
+                    y: 18,
                   }}
                   whileInView={{
                     opacity: 1,
@@ -187,19 +225,43 @@ export default function AboutSection() {
                   }}
                   viewport={{
                     once: true,
+                    amount: 0.3,
                   }}
                   transition={{
-                    duration: 0.7,
-                    delay: index * 0.1,
+                    duration: 0.6,
+                    delay: index * 0.09,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className={index > 0 ? "text-center" : ""}
+                  className={
+                    index === 0
+                      ? ""
+                      : "text-center"
+                  }
                 >
-                  <div className="display-font text-[42px] leading-none tracking-[-0.04em] text-[#173932] md:text-[52px]">
-                    {stat.value}
-                  </div>
+                  <p
+                    className="
+                      display-font
+                      text-[38px]
+                      leading-none
+                      tracking-[-0.04em]
+                      text-[#173932]
 
-                  <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#718079]">
+                      sm:text-[42px]
+                      md:text-[48px]
+                    "
+                  >
+                    {stat.value}
+                  </p>
+
+                  <p
+                    className="
+                      mt-2
+                      text-[10px]
+                      text-[#66756F]
+
+                      sm:text-[11px]
+                    "
+                  >
                     {stat.label}
                   </p>
                 </motion.div>
@@ -207,35 +269,11 @@ export default function AboutSection() {
             </div>
           </div>
 
-          {/* Right */}
-
-          <div className="lg:pt-16">
+          {/* =========================
+              RIGHT COLUMN
+          ========================== */}
+          <div className="flex flex-col lg:pt-2">
             <motion.p
-              initial={{
-                opacity: 0,
-                y: 24,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: 0.8,
-              }}
-              className="max-w-[520px] text-[15px] leading-7 text-[#61716B] md:text-[16px]"
-            >
-              Good care begins with being understood. We
-              combine compassionate conversations with
-              evidence-based approaches to help you understand
-              what you&apos;re experiencing, build healthier
-              patterns, and move forward with confidence.
-            </motion.p>
-
-            <motion.a
-              href="#care"
               initial={{
                 opacity: 0,
                 y: 18,
@@ -246,45 +284,87 @@ export default function AboutSection() {
               }}
               viewport={{
                 once: true,
+                amount: 0.2,
               }}
               transition={{
                 duration: 0.7,
-                delay: 0.1,
+                ease: [0.22, 1, 0.36, 1],
               }}
-              className="group mt-7 inline-flex items-center gap-3 border-b border-[#F4B49C] pb-2 text-[12px] font-semibold text-[#173932]"
-            >
-              Learn our approach
+              className="
+                max-w-[620px]
+                text-[14px]
+                leading-[1.9]
+                text-[#5E6D67]
 
-              <ArrowUpRight
-                size={15}
-                className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
-              />
-            </motion.a>
+                md:text-[15px]
+              "
+            >
+              We believe meaningful change begins with a safe,
+              supportive relationship. Our therapists provide
+              compassionate, evidence-based care tailored to your
+              experiences, goals, and pace.
+            </motion.p>
+
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 14,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 0.6,
+                delay: 0.08,
+              }}
+              className="mt-6"
+            >
+              <AnimatedButton
+                href="#services"
+                variant="peach"
+                className="min-w-[145px]"
+              >
+                Discover More
+              </AnimatedButton>
+            </motion.div>
 
             <motion.div
               style={{
                 y: rightImageY,
               }}
               initial={{
-                clipPath: "inset(100% 0 0 0)",
+                opacity: 0,
+                scale: 0.97,
               }}
               whileInView={{
-                clipPath: "inset(0% 0 0 0)",
+                opacity: 1,
+                scale: 1,
               }}
               viewport={{
                 once: true,
-                amount: 0.25,
+                amount: 0.1,
               }}
               transition={{
-                duration: 1.15,
-                delay: 0.1,
+                duration: 0.9,
+                delay: 0.08,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="mt-12 overflow-hidden rounded-[28px]"
+              className="
+                mt-8
+                overflow-hidden
+                rounded-[18px]
+                bg-[#EAE2D7]
+              "
             >
-              <motion.div
+              <motion.img
+                src="/images/about/about-therapy-2.jpg"
+                alt="Mental health counseling session"
                 initial={{
-                  scale: 1.08,
+                  scale: 1.05,
                 }}
                 whileInView={{
                   scale: 1,
@@ -293,14 +373,16 @@ export default function AboutSection() {
                   once: true,
                 }}
                 transition={{
-                  duration: 1.4,
+                  duration: 1.2,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                style={{
-                  backgroundImage:
-                    "url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1400&q=90')",
-                }}
-                className="aspect-[1.3/1] bg-cover bg-center"
+                className="
+                  block
+                  aspect-[1.55/1]
+                  w-full
+                  object-cover
+                  object-center
+                "
               />
             </motion.div>
           </div>
