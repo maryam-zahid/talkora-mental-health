@@ -211,8 +211,7 @@ export default function HealingJourneySection() {
             </p>
 
             <motion.a
-              href="#appointment"
-              whileHover={{
+href="/contact"              whileHover={{
                 y: -3,
                 scale: 1.03,
               }}
