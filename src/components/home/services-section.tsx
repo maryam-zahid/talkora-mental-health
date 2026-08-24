@@ -124,129 +124,78 @@ export default function ServicesSection() {
             </motion.p>
 
             {/* HEADING */}
-            <h2
-              className="
-                mt-5
-                max-w-[720px]
+         <motion.h2
+  initial={{
+    opacity: 0,
+    y: 42,
+    filter: "blur(8px)",
+  }}
+  whileInView={{
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+  }}
+  viewport={{
+    once: true,
+    amount: 0.15,
+  }}
+  transition={{
+    duration: 0.9,
+    ease: [0.22, 1, 0.36, 1],
+  }}
+  className="
+    mt-5
+    max-w-[720px]
 
-                display-font
+    display-font
 
-                text-[clamp(2.9rem,4.6vw,5rem)]
-                leading-[0.98]
-                tracking-[-0.045em]
+    text-[clamp(2.9rem,4.6vw,5rem)]
+    leading-[0.98]
+    tracking-[-0.045em]
 
-                text-[#173932]
-              "
-            >
-              <span className="block overflow-hidden pb-[0.04em]">
-                <motion.span
-                  initial={{
-                    y: "115%",
-                  }}
-                  whileInView={{
-                    y: "0%",
-                  }}
-                  viewport={{
-                    once: true,
-                    amount: 0.35,
-                  }}
-                  transition={{
-                    duration: 0.9,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  className="block"
-                >
-                  Professional mental
-                </motion.span>
-              </span>
-
-              <span className="block overflow-hidden pb-[0.05em]">
-                <motion.span
-                  initial={{
-                    y: "115%",
-                  }}
-                  whileInView={{
-                    y: "0%",
-                  }}
-                  viewport={{
-                    once: true,
-                    amount: 0.35,
-                  }}
-                  transition={{
-                    duration: 0.9,
-                    delay: 0.09,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  className="block"
-                >
-                  health support
-                </motion.span>
-              </span>
-            </h2>
-
-            {/* PEACH LINE */}
-            <motion.div
-              initial={{
-                scaleX: 0,
-                opacity: 0,
-              }}
-              whileInView={{
-                scaleX: 1,
-                opacity: 1,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: 0.7,
-                delay: 0.2,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="
-                mt-6
-                h-[2px]
-                w-16
-                origin-left
-                bg-[#F4B49C]
-              "
-            />
-
+    text-[#173932]
+  "
+>
+  Professional mental
+  <br />
+  health support
+</motion.h2>
+        
             {/* EXTRA TEXT UNDER HEADING */}
-            <motion.p
-              initial={{
-                opacity: 0,
-                y: 18,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-                amount: 0.3,
-              }}
-              transition={{
-                duration: 0.7,
-                delay: 0.12,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="
-                mt-5
-                max-w-[560px]
+       <motion.p
+  initial={{
+    opacity: 0,
+    y: 22,
+  }}
+  whileInView={{
+    opacity: 1,
+    y: 0,
+  }}
+  viewport={{
+    once: true,
+    amount: 0.2,
+  }}
+  transition={{
+    duration: 0.75,
+    delay: 0.16,
+    ease: [0.22, 1, 0.36, 1],
+  }}
+  className="
+    mt-5
+    max-w-[560px]
 
-                text-[14px]
-                leading-[1.8]
+    text-[14px]
+    leading-[1.8]
 
-                text-[#62716B]
+    text-[#62716B]
 
-                md:text-[15px]
-              "
-            >
-              Thoughtful, personalized care to help you
-              understand what you&apos;re experiencing, strengthen
-              emotional wellbeing, and move forward with greater
-              confidence.
-            </motion.p>
+    md:text-[15px]
+  "
+>
+  Thoughtful, personalized care to help you understand what
+  you&apos;re experiencing, strengthen emotional wellbeing,
+  and move forward with greater confidence.
+</motion.p>
           </div>
 
           {/* RIGHT */}
