@@ -7,7 +7,7 @@ import SpecialistsSection from "@/components/home/specialists-section";
 import PricingSection from "@/components/home/pricing-section";
 import TestimonialsSection from "@/components/home/testimonials-section";
 import HealingJourneySection from "@/components/home/healing-journey-section";
-
+import Footer from "@/components/layout/footer";
 export default function Home() {
   return (
     <main className="page-grain min-h-screen overflow-x-hidden">
@@ -21,6 +21,7 @@ export default function Home() {
       <PricingSection />
       <TestimonialsSection />
       <HealingJourneySection />
+      <Footer />
     </main>
   );
 }
