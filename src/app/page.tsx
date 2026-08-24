@@ -6,6 +6,7 @@ import WhyUsSection from "@/components/home/why-us-section";
 import SpecialistsSection from "@/components/home/specialists-section";
 import PricingSection from "@/components/home/pricing-section";
 import TestimonialsSection from "@/components/home/testimonials-section";
+import HealingJourneySection from "@/components/home/healing-journey-section";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <SpecialistsSection />
       <PricingSection />
       <TestimonialsSection />
+      <HealingJourneySection />
     </main>
   );
 }
