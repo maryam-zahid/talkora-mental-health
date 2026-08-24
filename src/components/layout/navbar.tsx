@@ -68,13 +68,14 @@ export default function Navbar() {
         className="fixed inset-x-0 top-0 z-50"
       >
         <motion.div
-          animate={{
-            backgroundColor: scrolled
-              ? "rgba(19, 39, 34, 0.88)"
-              : "rgba(10, 14, 12, 0.10)",
-            backdropFilter: scrolled ? "blur(18px)" : "blur(0px)",
-            WebkitBackdropFilter: scrolled ? "blur(18px)" : "blur(0px)",
-          }}
+     animate={{
+  backgroundColor: scrolled
+    ? "rgba(23, 57, 50, 0.86)"
+    : "rgba(23, 57, 50, 0.12)",
+  backdropFilter: scrolled
+    ? "blur(18px)"
+    : "blur(4px)",
+}}
           transition={{
             duration: 0.35,
             ease: [0.22, 1, 0.36, 1],

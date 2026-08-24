@@ -10,37 +10,37 @@ const specialists = [
   {
     name: "Daniel Brooks",
     role: "Clinical Psychologist",
-  
-    image: "https://media.istockphoto.com/id/1701881200/photo/successful-businessman-looking-at-camera-with-confidence.jpg?s=612x612&w=0&k=20&c=VjdGYYS1ja_fEi4zwxpB9ytMfTlfgjxHBVOqfqIuAF8=",
+    focus: "Anxiety, trauma & emotional wellbeing",
+    image: "/images/team/james-wilson.jpg",
   },
   {
     name: "Emily Carter",
     role: "Clinical Psychologist",
-  
+    focus: "Relationships, confidence & personal growth",
     image: "/images/team/emily-carter.jpg",
   },
   {
     name: "James Wilson",
     role: "Mental Health Counselor",
-    
+    focus: "Stress, mindfulness & lifestyle balance",
     image: "/images/team/james-wilson.jpg",
   },
   {
     name: "Sophia Turner",
     role: "Wellness Specialist",
-   
+    focus: "Self-esteem, emotional resilience & wellbeing",
     image: "/images/team/olivia-bennett.jpg",
   },
   {
     name: "Ethan Parker",
     role: "Behavioral Therapist",
-   
+    focus: "Behavioral patterns, habits & emotional regulation",
     image: "/images/team/ethan-parker.jpg",
   },
   {
     name: "Olivia Bennett",
     role: "Counseling Therapist",
-    
+    focus: "Life transitions, stress & relationship support",
     image: "/images/team/olivia-bennett.jpg",
   },
 ];
