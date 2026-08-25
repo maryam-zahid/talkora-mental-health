@@ -79,10 +79,13 @@ export default function PricingSection() {
         relative
         overflow-hidden
         bg-[#FBF8F3]
-       py-12
-md:py-14
-lg:py-16
-xl:py-20
+//        py-12
+// md:py-14
+// lg:py-16
+// xl:py-20
+py-10
+md:py-12
+lg:py-14
       "
     >
       <Container>
@@ -144,12 +147,12 @@ xl:py-20
                 ease: [0.22, 1, 0.36, 1],
               }}
               className="
-                mt-5
+                mt-3
                 max-w-[720px]
 
                 display-font
 
-                text-[clamp(2.9rem,4.5vw,4.9rem)]
+text-[clamp(2.5rem,4vw,4.2rem)]
                 leading-[0.98]
                 tracking-[-0.045em]
 
@@ -223,7 +226,7 @@ xl:py-20
 
             <div className="mt-6">
               <AnimatedButton
-                href="#appointment"
+href="/contact"
                 variant="peach"
               >
                 Talk To Us
@@ -238,12 +241,13 @@ xl:py-20
 
 <div
   className="
-    mt-12
+    mt-7
     grid
-    gap-5
+    gap-4
+    md:mt-8
     md:grid-cols-2
     lg:grid-cols-3
-    xl:gap-6
+    lg:gap-5
   "
 >
   {plans.map((plan, index) => (
@@ -274,7 +278,7 @@ xl:py-20
         group
         relative
         flex
-        min-h-[500px]
+min-h-[420px]
         overflow-hidden
 
         rounded-[22px]
@@ -285,8 +289,8 @@ xl:py-20
         bg-[#F2E7DB]
         text-[#173932]
 
-        p-7
-        md:p-8
+       p-6
+md:p-7
 
         shadow-[0_10px_28px_rgba(20,48,42,0.05)]
 
@@ -446,13 +450,13 @@ xl:py-20
             className="
               display-font
 
-              text-[62px]
+              text-[52px]
               leading-none
               tracking-[-0.05em]
 
               text-[#173932]
 
-              md:text-[68px]
+              md:text-[58px]
             "
           >
             ${plan.price}
@@ -476,11 +480,11 @@ xl:py-20
 
         <h3
           className="
-            mt-7
+            mt-5
 
             display-font
 
-            text-[27px]
+            text-[24px]
             leading-[1.05]
             tracking-[-0.03em]
 
@@ -500,10 +504,10 @@ xl:py-20
 
         <p
           className="
-            mt-5
+            mt-3
 
             text-[13px]
-            leading-[1.75]
+            leading-[1.65]
 
             text-[#596863]
 
@@ -522,7 +526,7 @@ xl:py-20
 
         <div
           className="
-            mt-7
+            mt-4
 
             h-px
 
@@ -552,11 +556,11 @@ xl:py-20
 
         <p
           className="
-            mt-6
+            mt-4
 
             display-font
 
-            text-[20px]
+            text-[18px]
 
             text-[#173932]
           "
@@ -584,8 +588,8 @@ xl:py-20
             },
           }}
           className="
-            mt-5
-            space-y-3
+            mt-3
+            space-y-2
           "
         >
           {plan.features.map((feature) => (
@@ -652,7 +656,7 @@ xl:py-20
             CTA
         ================================================ */}
 
-        <div className="mt-auto pt-8">
+        <div className="mt-auto pt-5">
           <motion.a
             href="#appointment"
             whileHover={{
@@ -664,7 +668,7 @@ xl:py-20
             }}
             className="
               flex
-              min-h-[54px]
+              min-h-[48px]
               w-full
 
               items-center

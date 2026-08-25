@@ -1,17 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Menu, X } from "lucide-react";
 
 import Container from "@/components/ui/container";
 
 const navItems = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services", dropdown: true },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/#about" },
+  { label: "Services", href: "/#services", dropdown: true },
   { label: "Pages", href: "#", dropdown: true },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const navVariants = {
@@ -40,52 +41,52 @@ const navItemVariants = {
 };
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
-    };
+  const getIsActive = (label: string) => {
+    if (label === "Home") {
+      return pathname === "/";
+    }
 
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
+    if (label === "Contact") {
+      return pathname === "/contact";
+    }
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+    return false;
+  };
 
   return (
     <>
       <motion.header
-        initial={{ opacity: 0, y: -18 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{
+          opacity: 0,
+          y: -24,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
         transition={{
-          duration: 0.8,
+          duration: 0.75,
           ease: [0.22, 1, 0.36, 1],
         }}
-        className="fixed inset-x-0 top-0 z-50"
+        className="
+          absolute
+          left-0
+          right-0
+          top-0
+          z-30
+          w-full
+        "
       >
-        <motion.div
-     animate={{
-  backgroundColor: scrolled
-    ? "rgba(23, 57, 50, 0.86)"
-    : "rgba(23, 57, 50, 0.12)",
-  backdropFilter: scrolled
-    ? "blur(18px)"
-    : "blur(4px)",
-}}
-          transition={{
-            duration: 0.35,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className={[
-            "border-b transition-shadow duration-300",
-            scrolled
-              ? "border-white/10 shadow-[0_14px_40px_rgba(0,0,0,0.16)]"
-              : "border-white/10",
-          ].join(" ")}
+        <div
+          className="
+            border-b
+            border-white/10
+            bg-[#173932]/10
+            backdrop-blur-[2px]
+          "
         >
           <Container>
             <div
@@ -94,15 +95,13 @@ export default function Navbar() {
                 h-[96px]
                 grid-cols-[390px_1fr_250px]
                 items-center
-
                 xl:h-[100px]
-
                 2xl:grid-cols-[430px_1fr_260px]
               "
             >
               {/* LOGO */}
               <motion.a
-                href="#home"
+                href="/"
                 initial={{ opacity: 0, x: -18 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{
@@ -110,7 +109,13 @@ export default function Navbar() {
                   delay: 0.1,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="flex w-fit items-center gap-3 text-white"
+                className="
+                  flex
+                  w-fit
+                  items-center
+                  gap-3
+                  text-white
+                "
               >
                 <motion.span
                   initial={{
@@ -129,7 +134,13 @@ export default function Navbar() {
                     ease: [0.22, 1, 0.36, 1],
                   }}
                   whileHover={{ rotate: 7 }}
-                  className="relative flex size-10 items-center justify-center"
+                  className="
+                    relative
+                    flex
+                    size-10
+                    items-center
+                    justify-center
+                  "
                 >
                   <span className="absolute size-9 rounded-full border border-[#F4B49C]" />
                   <span className="absolute size-5 rotate-45 rounded-[6px] border border-[#CFE3D6]" />
@@ -176,73 +187,84 @@ export default function Navbar() {
                   justify-end
                   gap-9
                   pr-3
-
                   xl:flex
-
                   2xl:gap-10
                   2xl:pr-4
                 "
               >
-                {navItems.map((item) => (
-                  <motion.a
-                    key={item.label}
-                    variants={navItemVariants}
-                    href={item.href}
-                    whileHover={{ y: -2 }}
-                    className={[
-                      "group relative flex items-center gap-1.5",
-                      "display-font text-[20px] font-medium",
-                      "transition-colors duration-300",
-                      item.label === "Home"
-                        ? "text-[#F4B49C]"
-                        : "text-white hover:text-[#F4B49C]",
-                    ].join(" ")}
-                  >
-                    <span>{item.label}</span>
+                {navItems.map((item) => {
+                  const isActive = getIsActive(item.label);
 
-                    {item.dropdown && (
-                      <ChevronDown
-                        size={15}
-                        strokeWidth={1.6}
-                        className="
-                          mt-1
-                          transition-transform
-                          duration-300
-                          group-hover:rotate-180
-                        "
+                  return (
+                    <motion.a
+                      key={item.label}
+                      variants={navItemVariants}
+                      href={item.href}
+                      whileHover={{
+                        y: -2,
+                      }}
+                      className={[
+                        "group relative flex items-center gap-1.5",
+                        "display-font text-[20px] font-medium",
+                        "transition-colors duration-300",
+                        isActive
+                          ? "text-[#F4B49C]"
+                          : "text-white hover:text-[#F4B49C]",
+                      ].join(" ")}
+                    >
+                      <span>{item.label}</span>
+
+                      {item.dropdown && (
+                        <ChevronDown
+                          size={15}
+                          strokeWidth={1.6}
+                          className="
+                            mt-1
+                            transition-transform
+                            duration-300
+                            group-hover:rotate-180
+                          "
+                        />
+                      )}
+
+                      <span
+                        className={[
+                          "absolute -bottom-2 left-0 h-px",
+                          "bg-[#F4B49C]",
+                          "transition-all duration-300",
+                          isActive
+                            ? "w-full"
+                            : "w-0 group-hover:w-full",
+                        ].join(" ")}
                       />
-                    )}
-
-                    <span
-                      className="
-                        absolute
-                        -bottom-2
-                        left-0
-                        h-px
-                        w-0
-                        bg-[#F4B49C]
-                        transition-all
-                        duration-300
-                        group-hover:w-full
-                      "
-                    />
-                  </motion.a>
-                ))}
+                    </motion.a>
+                  );
+                })}
               </motion.nav>
 
               {/* APPOINTMENT CTA */}
               <motion.div
-                initial={{ opacity: 0, x: 16 }}
-                animate={{ opacity: 1, x: 0 }}
+                initial={{
+                  opacity: 0,
+                  x: 16,
+                }}
+                animate={{
+                  opacity: 1,
+                  x: 0,
+                }}
                 transition={{
                   duration: 0.68,
                   delay: 0.68,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="hidden justify-end xl:flex"
+                className="
+                  hidden
+                  justify-end
+                  xl:flex
+                "
               >
                 <motion.a
-                  href="#appointment"
+                  href="/contact"
                   whileHover={{
                     y: -2,
                     scale: 1.01,
@@ -281,7 +303,9 @@ export default function Navbar() {
                   onClick={() => {
                     setMobileOpen((current) => !current);
                   }}
-                  whileTap={{ scale: 0.94 }}
+                  whileTap={{
+                    scale: 0.94,
+                  }}
                   aria-label="Toggle navigation"
                   className="
                     flex
@@ -351,7 +375,7 @@ export default function Navbar() {
               </div>
             </div>
           </Container>
-        </motion.div>
+        </div>
       </motion.header>
 
       {/* MOBILE MENU */}
@@ -397,54 +421,61 @@ export default function Navbar() {
               }}
               initial="hidden"
               animate="visible"
-              className="mx-auto flex max-w-[720px] flex-col"
+              className="
+                mx-auto
+                flex
+                max-w-[720px]
+                flex-col
+              "
             >
-              {navItems.map((item) => (
-                <motion.a
-                  key={item.label}
-                  href={item.href}
-                  onClick={() => {
-                    setMobileOpen(false);
-                  }}
-                  variants={{
-                    hidden: {
-                      opacity: 0,
-                      y: 22,
-                    },
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                      transition: {
-                        duration: 0.52,
-                        ease: [0.22, 1, 0.36, 1],
-                      },
-                    },
-                  }}
-                  className="
-                    flex
-                    items-center
-                    justify-between
-                    border-b
-                    border-white/10
-                    py-5
-                    text-white
-                  "
-                >
-                  <span className="display-font text-[35px]">
-                    {item.label}
-                  </span>
+              {navItems.map((item) => {
+                const isActive = getIsActive(item.label);
 
-                  {item.dropdown && (
-                    <ChevronDown
-                      size={18}
-                      strokeWidth={1.5}
-                    />
-                  )}
-                </motion.a>
-              ))}
+                return (
+                  <motion.a
+                    key={item.label}
+                    href={item.href}
+                    onClick={() => {
+                      setMobileOpen(false);
+                    }}
+                    variants={{
+                      hidden: {
+                        opacity: 0,
+                        y: 22,
+                      },
+                      visible: {
+                        opacity: 1,
+                        y: 0,
+                        transition: {
+                          duration: 0.52,
+                          ease: [0.22, 1, 0.36, 1],
+                        },
+                      },
+                    }}
+                    className={[
+                      "flex items-center justify-between",
+                      "border-b border-white/10 py-5",
+                      isActive
+                        ? "text-[#F4B49C]"
+                        : "text-white",
+                    ].join(" ")}
+                  >
+                    <span className="display-font text-[35px]">
+                      {item.label}
+                    </span>
+
+                    {item.dropdown && (
+                      <ChevronDown
+                        size={18}
+                        strokeWidth={1.5}
+                      />
+                    )}
+                  </motion.a>
+                );
+              })}
 
               <motion.a
-                href="#appointment"
+                href="/contact"
                 onClick={() => {
                   setMobileOpen(false);
                 }}

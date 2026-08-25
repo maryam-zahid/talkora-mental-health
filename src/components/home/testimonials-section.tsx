@@ -253,7 +253,7 @@ text-[clamp(2.5rem,3.8vw,4.1rem)]                leading-[0.98]
 
             <div className="mt-6">
               <AnimatedButton
-                href="#appointment"
+href="/contact"
                 variant="peach"
               >
                 Start Your Journey
